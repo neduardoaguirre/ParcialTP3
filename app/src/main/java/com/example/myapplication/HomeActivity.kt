@@ -52,30 +52,38 @@ class HomeActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         println(viewModel.username)
         Toast.makeText(this, viewModel.username, Toast.LENGTH_SHORT).show()
 
+        getActivity()
+
     }
 
-    fun getActivity() {
+    private fun getActivity() {
         val service = APIServiceBuilder.create()
-        service.getCarsList().enqueue(object: Callback<CarsResponse> {
+
+        service.getCarsList("NytbaVuK48jcFV44ssUHjRVUPLxQ8GDl8osK6xe4").enqueue(object: Callback<List<Car>> {
             override fun onResponse(
-                call: Call<CarsResponse>,
-                response: Response<CarsResponse>
+                call: Call<List<Car>>,
+                response: Response<List<Car>>
             ) {
-                showData(response.body()!!.results)
+                Toast.makeText(this@HomeActivity, "Response obtenida", Toast.LENGTH_LONG).show()
+
+                showData(response.body()!!)
             }
 
-            override fun onFailure(call: Call<CarsResponse>, t: Throwable) {
-                TODO("Not yet implemented")
+            override fun onFailure(call: Call<List<Car>>, t: Throwable) {
+
+                Toast.makeText(this@HomeActivity, "No se pudo obtener Response", Toast.LENGTH_LONG).show()
             }
         })
     }
 
-    private fun showData(pokemonList: List<Car>) {
+    private fun showData(carList: List<Car>) {
+
         findViewById<RecyclerView>(R.id.recyclerView).apply {
             layoutManager = LinearLayoutManager(this@HomeActivity)
-            adapter = CarsAdapter(pokemonList)
+            adapter = CarsAdapter(carList)
         }
-    }
+
+             }
 
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
