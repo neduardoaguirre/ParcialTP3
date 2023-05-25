@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">PREMIER RENTCAR</string>
+    <string name="btn_login">INGRESAR</string>
 </resources>
