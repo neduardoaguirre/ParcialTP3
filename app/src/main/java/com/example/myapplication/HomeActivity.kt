@@ -22,6 +22,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import APIServiceBuilder.APIServiceBuilder
+import android.graphics.Color
+import github.com.st235.lib_expandablebottombar.ExpandableBottomBar
+import github.com.st235.lib_expandablebottombar.MenuItemDescriptor
 
 class HomeActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
 
@@ -54,6 +57,36 @@ class HomeActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         getActivity()
 
+        //bottom navigation
+
+        val bottomBar: ExpandableBottomBar = findViewById(R.id.expandable_bottom_bar)
+        val menu = bottomBar.menu
+
+//        menu.add(
+//            MenuItemDescriptor.Builder(
+//                this,
+//                R.id.home,
+//                R.drawable.ic_home,
+//                R.string.menu_button,
+//                Color.WHITE
+//            )
+//                .build()
+//        )
+
+        bottomBar.onItemSelectedListener = { view, menuItem,True ->
+            /**
+             * handle menu item clicks here,
+             * but clicks on already selected item will not affect this callback
+             */
+        }
+
+        bottomBar.onItemReselectedListener = { view, menuItem,True ->
+            /**
+             * handle here all the click in already selected items
+             */
+        }
+
+
     }
 
     private fun getActivity() {
@@ -78,10 +111,10 @@ class HomeActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
     private fun showData(carList: List<Car>) {
 
-        findViewById<RecyclerView>(R.id.recyclerView).apply {
-            layoutManager = LinearLayoutManager(this@HomeActivity)
-            adapter = CarsAdapter(carList)
-        }
+//                findViewById<RecyclerView>(R.id.recyclerView).apply {
+//                    layoutManager = LinearLayoutManager(this@HomeActivity)
+//                    adapter = CarsAdapter(carList)
+//                }
 
              }
 

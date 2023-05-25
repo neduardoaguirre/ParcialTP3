@@ -4,5 +4,8 @@
     <string name="txt_drawer_title">TITULO</string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
-
+    <string name="menu_button_home">Home</string>
+    <string name="menu_button_shop">Autos</string>
+    <string name="menu_button_search">Buscar</string>
+    <string name="menu_button_perfil">Perfil</string>
 </resources>

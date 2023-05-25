@@ -67,4 +67,6 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:$nav_version")
 
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
+
+    implementation 'com.github.st235:expandablebottombar:1.5.1'
 }
