@@ -1,5 +1,8 @@
 package com.example.myapplication
 
+import CarsModel.Car
+import CarsModel.CarsResponse
+import RecyclerViewAdapter.CarsAdapter
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,7 +12,13 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import APIServiceBuilder.APIServiceBuilder
 
 class HomeActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
 
@@ -33,6 +42,29 @@ class HomeActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         val navigationView: NavigationView = findViewById(R. id.nav_view)
         navigationView. setNavigationItemSelectedListener(this)
 
+    }
+
+    fun getActivity() {
+        val service = APIServiceBuilder.create()
+        service.getCarsList().enqueue(object: Callback<CarsResponse> {
+            override fun onResponse(
+                call: Call<CarsResponse>,
+                response: Response<CarsResponse>
+            ) {
+                showData(response.body()!!.results)
+            }
+
+            override fun onFailure(call: Call<CarsResponse>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
+    private fun showData(pokemonList: List<Car>) {
+        findViewById<RecyclerView>(R.id.recyclerView).apply {
+            layoutManager = LinearLayoutManager(this@HomeActivity)
+            adapter = CarsAdapter(pokemonList)
+        }
     }
 
 
