@@ -1,7 +1,6 @@
 package APIServiceBuilder
 
 import CarsModel.Car
-import CarsModel.CarsResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header

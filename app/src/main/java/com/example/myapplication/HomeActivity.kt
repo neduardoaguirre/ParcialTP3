@@ -1,7 +1,6 @@
 package com.example.myapplication
 
 import CarsModel.Car
-import CarsModel.CarsResponse
 import RecyclerViewAdapter.CarsAdapter
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
@@ -55,7 +54,6 @@ class HomeActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         println(viewModel.username)
         Toast.makeText(this, viewModel.username, Toast.LENGTH_SHORT).show()
 
-        getActivity()
 
         //bottom navigation
 
@@ -88,36 +86,6 @@ class HomeActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
 
     }
-
-    private fun getActivity() {
-        val service = APIServiceBuilder.create()
-
-        service.getCarsList("NytbaVuK48jcFV44ssUHjRVUPLxQ8GDl8osK6xe4").enqueue(object: Callback<List<Car>> {
-            override fun onResponse(
-                call: Call<List<Car>>,
-                response: Response<List<Car>>
-            ) {
-                Toast.makeText(this@HomeActivity, "Response obtenida", Toast.LENGTH_LONG).show()
-
-                showData(response.body()!!)
-            }
-
-            override fun onFailure(call: Call<List<Car>>, t: Throwable) {
-
-                Toast.makeText(this@HomeActivity, "No se pudo obtener Response", Toast.LENGTH_LONG).show()
-            }
-        })
-    }
-
-    private fun showData(carList: List<Car>) {
-
-//                findViewById<RecyclerView>(R.id.recyclerView).apply {
-//                    layoutManager = LinearLayoutManager(this@HomeActivity)
-//                    adapter = CarsAdapter(carList)
-//                }
-
-             }
-
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         //En este metodo escuchamos cada vez que clikeamos va a imprimir un toast, se puede utilizar para darle funcionalidad al presionar un item

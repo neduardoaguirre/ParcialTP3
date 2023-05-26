@@ -1,9 +1,5 @@
 package CarsModel
 
-data class CarsResponse (
-    val results: List<Car>
-)
-
 data class Car(
     val make: String,
     val model: String,

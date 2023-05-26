@@ -8,4 +8,11 @@
     <string name="menu_button_shop">Autos</string>
     <string name="menu_button_search">Buscar</string>
     <string name="menu_button_perfil">Perfil</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="autosDeportivos">Deportivos</string>
+    <string name="autosSUV">SUV</string>
+    <string name="autosElectricos">Eléctricos</string>
+    <string name="filtro_auto">Filtro >|</string>
+
 </resources>

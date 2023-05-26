@@ -10,11 +10,11 @@ import com.example.myapplication.R
 
 class CarsAdapter (private val carsList: List<Car>): RecyclerView.Adapter<CarsAdapter.ViewHolder>(){
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val name: TextView = itemView.findViewById<TextView>(R.id.car)
+        val name: TextView = itemView.findViewById<TextView>(R.id.carTypeTitle)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.car_row, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.car_type_row, parent, false)
         return ViewHolder(view)
     }
 
