@@ -23,8 +23,16 @@ import retrofit2.Callback
 import retrofit2.Response
 import APIServiceBuilder.APIServiceBuilder
 import android.graphics.Color
+import androidx.fragment.app.Fragment
+import fragments.AutosFragment
+import fragments.HomeContent
+import fragments.SearchFragment
+import fragments.UserFragment
 import github.com.st235.lib_expandablebottombar.ExpandableBottomBar
 import github.com.st235.lib_expandablebottombar.MenuItemDescriptor
+
+
+
 
 class HomeActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
 
@@ -34,6 +42,7 @@ class HomeActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        changeFragment(HomeContent())
 
         var toolbar: Toolbar = findViewById(R.id.toolbar_main)
         setSupportActionBar(toolbar)
@@ -41,13 +50,15 @@ class HomeActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         drawer = findViewById(R.id.home_layout)
 
         toggle = ActionBarDrawerToggle( this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawer. addDrawerListener(toggle)
+        toggle.isDrawerIndicatorEnabled = true
+        drawer.addDrawerListener(toggle)
+        toggle.syncState()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)
 
-        val navigationView: NavigationView = findViewById(R. id.nav_view)
-        navigationView. setNavigationItemSelectedListener(this)
+        val navigationView: NavigationView = findViewById(R.id.nav_view)
+        navigationView.setNavigationItemSelectedListener(this)
 
         viewModel = ViewModelProvider(this)[PerfilViewModel::class.java]
         viewModel.username  = intent.getStringExtra("username").toString()
@@ -73,17 +84,15 @@ class HomeActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 //                .build()
 //        )
 
-        bottomBar.onItemSelectedListener = { view, menuItem,True ->
-            /**
-             * handle menu item clicks here,
-             * but clicks on already selected item will not affect this callback
-             */
-        }
 
         bottomBar.onItemReselectedListener = { view, menuItem,True ->
-            /**
-             * handle here all the click in already selected items
-             */
+
+            when(menuItem.id){
+                R.id.home_btn_bar -> changeFragment(HomeContent())
+                R.id.shop_btn_bar -> changeFragment(AutosFragment())
+                R.id.search_btn_bar -> changeFragment(SearchFragment())
+                R.id.perfil_btn_bar -> changeFragment(UserFragment())
+            }
         }
 
 
@@ -109,6 +118,12 @@ class HomeActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         })
     }
 
+    private fun changeFragment(fragment: Fragment){
+        val fragmentVar = supportFragmentManager.beginTransaction()
+        fragmentVar.replace(R.id.fragmentContainerView, fragment).commit()
+    }
+
+
     private fun showData(carList: List<Car>) {
 
 //                findViewById<RecyclerView>(R.id.recyclerView).apply {
@@ -121,6 +136,7 @@ class HomeActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         //En este metodo escuchamos cada vez que clikeamos va a imprimir un toast, se puede utilizar para darle funcionalidad al presionar un item
+        Toast.makeText(this,item.itemId.toString(), Toast.LENGTH_SHORT).show()
         when(item.itemId){
             R.id.nav_item_one -> Toast.makeText(this,"Item 1", Toast.LENGTH_SHORT).show()
             R.id.nav_item_two -> Toast.makeText(this,"Item 2", Toast.LENGTH_SHORT).show()
