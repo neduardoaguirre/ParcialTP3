@@ -16,4 +16,5 @@
     <string name="modo_oscuro">Modo Oscuro</string>
     <string name="notificaciones">Notificaciones</string>
     <string name="username_default">Username</string>
+    <string name="welcome">Hola</string>
 </resources>

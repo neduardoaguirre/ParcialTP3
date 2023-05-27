@@ -47,6 +47,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         changeFragment(HomeContent())
+
         //Drawer
         var toolbar: Toolbar = findViewById(R.id.toolbar_main)
         setSupportActionBar(toolbar)
@@ -62,31 +63,21 @@ class HomeActivity : AppCompatActivity() {
         navigationView.setNavigationItemSelectedListener { menuItem ->
             // Manejar la selección del elemento del menú aquí
             when (menuItem.itemId) {
-                R.id.nav_home -> {
-                    // Lógica para el elemento 1
-                    changeFragment(HomeContent())
-                    drawer.closeDrawer(GravityCompat.START)
-                    true
-                }
                 R.id.nav_perfil -> {
-                    // Lógica para el elemento 1
                     changeFragment(UserFragment())
                     drawer.closeDrawer(GravityCompat.START)
                     true
                 }
                 R.id.nav_configuration -> {
-                    // Lógica para el elemento 2
                     changeFragment(SettingsFragment())
                     drawer.closeDrawer(GravityCompat.START)
                     true
                 }
                 R.id.nav_favorites -> {
-                    // Lógica para el elemento 3
                     Toast.makeText(this, "nav_favorites", Toast.LENGTH_LONG).show()
                     drawer.closeDrawer(GravityCompat.START)
                     true
                 }
-                // Agrega más casos según tus necesidades
                 else -> false
             }
 
