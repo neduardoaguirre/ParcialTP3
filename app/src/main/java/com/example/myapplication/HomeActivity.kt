@@ -24,6 +24,8 @@ import retrofit2.Response
 import APIServiceBuilder.APIServiceBuilder
 import android.graphics.Color
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.ui.AppBarConfiguration
 import fragments.AutosFragment
 import fragments.HomeContent
 import fragments.SearchFragment
@@ -34,56 +36,63 @@ import github.com.st235.lib_expandablebottombar.MenuItemDescriptor
 
 
 
-class HomeActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
+class HomeActivity : AppCompatActivity() {
 
-    private lateinit var drawer : DrawerLayout
-    private lateinit var toggle : ActionBarDrawerToggle
     private lateinit var viewModel : PerfilViewModel
+    private lateinit var navigationView: NavigationView
+    private lateinit var drawer: DrawerLayout
+    //lateinit var binding:
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        changeFragment(HomeContent())
 
-        var toolbar: Toolbar = findViewById(R.id.toolbar_main)
-        setSupportActionBar(toolbar)
+        //Drawer
+        setSupportActionBar(findViewById(R.id.toolbar))
 
         drawer = findViewById(R.id.home_layout)
-
-        toggle = ActionBarDrawerToggle( this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        toggle.isDrawerIndicatorEnabled = true
-        drawer.addDrawerListener(toggle)
-        toggle.syncState()
+        navigationView = findViewById(R.id.navigation_view)
+        val drawerToggle = ActionBarDrawerToggle(this, drawer, R.string.open, R.string.close)
+        drawer.addDrawerListener(drawerToggle)
+        drawerToggle.syncState()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeButtonEnabled(true)
 
-        val navigationView: NavigationView = findViewById(R.id.nav_view)
-        navigationView.setNavigationItemSelectedListener(this)
+        navigationView.setNavigationItemSelectedListener { menuItem ->
+            // Manejar la selección del elemento del menú aquí
+            when (menuItem.itemId) {
+                R.id.nav_home -> {
+                    // Lógica para el elemento 1
+                    Toast.makeText(this, "nav_home", Toast.LENGTH_LONG).show()
+                    changeFragment(HomeContent())
+                    true
+                }
+                R.id.nav_configuration -> {
+                    // Lógica para el elemento 2
+                    Toast.makeText(this, "nav_configuration", Toast.LENGTH_LONG).show()
+                    true
+                }
+                R.id.nav_favorites -> {
+                    // Lógica para el elemento 3
+                    Toast.makeText(this, "nav_favorites", Toast.LENGTH_LONG).show()
+                    true
+                }
+                // Agrega más casos según tus necesidades
+                else -> false
+            }
+        }
+
+
+//        changeFragment(HomeContent())
 
         viewModel = ViewModelProvider(this)[PerfilViewModel::class.java]
         viewModel.username  = intent.getStringExtra("username").toString()
 
-        println(viewModel.username)
-        Toast.makeText(this, viewModel.username, Toast.LENGTH_SHORT).show()
-
         getActivity()
 
+
         //bottom navigation
-
         val bottomBar: ExpandableBottomBar = findViewById(R.id.expandable_bottom_bar)
-        val menu = bottomBar.menu
-
-//        menu.add(
-//            MenuItemDescriptor.Builder(
-//                this,
-//                R.id.home,
-//                R.drawable.ic_home,
-//                R.string.menu_button,
-//                Color.WHITE
-//            )
-//                .build()
-//        )
-
 
         bottomBar.onItemReselectedListener = { view, menuItem,True ->
 
@@ -97,6 +106,22 @@ class HomeActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
 
     }
+
+    private fun changeFragment(fragment: Fragment){
+        val fragmentVar = supportFragmentManager.beginTransaction()
+        fragmentVar.replace(R.id.fragmentContainerView, fragment).commit()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                drawer.openDrawer(GravityCompat.START)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
 
     private fun getActivity() {
         val service = APIServiceBuilder.create()
@@ -118,12 +143,6 @@ class HomeActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         })
     }
 
-    private fun changeFragment(fragment: Fragment){
-        val fragmentVar = supportFragmentManager.beginTransaction()
-        fragmentVar.replace(R.id.fragmentContainerView, fragment).commit()
-    }
-
-
     private fun showData(carList: List<Car>) {
 
 //                findViewById<RecyclerView>(R.id.recyclerView).apply {
@@ -132,35 +151,5 @@ class HomeActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 //                }
 
              }
-
-
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        //En este metodo escuchamos cada vez que clikeamos va a imprimir un toast, se puede utilizar para darle funcionalidad al presionar un item
-        Toast.makeText(this,item.itemId.toString(), Toast.LENGTH_SHORT).show()
-        when(item.itemId){
-            R.id.nav_item_one -> Toast.makeText(this,"Item 1", Toast.LENGTH_SHORT).show()
-            R.id.nav_item_two -> Toast.makeText(this,"Item 2", Toast.LENGTH_SHORT).show()
-            R.id.nav_item_three -> Toast.makeText(this,"Item 3", Toast.LENGTH_SHORT).show()
-        }
-        drawer.closeDrawer(GravityCompat.START)
-        return true
-    }
-
-    override fun onPostCreate(savedInstanceState: Bundle?) {
-        super.onPostCreate(savedInstanceState)
-        toggle.syncState()
-    }
-
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-        toggle.onConfigurationChanged(newConfig)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(toggle.onOptionsItemSelected(item)){
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }
 
 }
