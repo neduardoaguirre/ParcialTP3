@@ -14,5 +14,6 @@
     <string name="autosSUV">SUV</string>
     <string name="autosElectricos">Eléctricos</string>
     <string name="filtro_auto">Filtro >|</string>
+    <string name="txtViewMarca">Marcas</string>
 
 </resources>

@@ -1,9 +1,11 @@
 package fragments
 
 import APIServiceBuilder.APIServiceBuilder
+import CarsData.CarsDataProvider
 import CarsModel.Car
 import CarsModel.CarTypes
 import RecyclerViewAdapter.CarsAdapter
+import RecyclerViewAdapter.CarsMarksAdapter
 import RecyclerViewAdapter.CarsTypesAdapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -32,20 +34,38 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        vista =  inflater.inflate(R.layout.fragment_home, container, false)
+        vista = inflater.inflate(R.layout.fragment_home, container, false)
         var rec_cars = vista.findViewById<RecyclerView>(R.id.rec_cars)
+        var rec_marks = vista.findViewById<RecyclerView>(R.id.rec_marks)
 
+        rec_marks.setHasFixedSize(true)
         rec_cars.setHasFixedSize(true)
 
         val linearLayoutManager = LinearLayoutManager(context)
+        val linearLayoutManager2 =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, true)
+        rec_cars.layoutManager = linearLayoutManager
+        rec_marks.layoutManager = linearLayoutManager2
 
-        rec_cars.layoutManager= linearLayoutManager
-
-        carsTypes.add(CarTypes("Deportivos", context?.let { ContextCompat.getDrawable(it, R.drawable.deportivos) }))
-        carsTypes.add(CarTypes("SUV", context?.let { ContextCompat.getDrawable(it, R.drawable.suv) }))
-        carsTypes.add(CarTypes("Eléctricos", context?.let { ContextCompat.getDrawable(it, R.drawable.electricos) }))
+        carsTypes.add(
+            CarTypes(
+                "Deportivos",
+                context?.let { ContextCompat.getDrawable(it, R.drawable.deportivos) })
+        )
+        carsTypes.add(
+            CarTypes(
+                "SUV",
+                context?.let { ContextCompat.getDrawable(it, R.drawable.suv) })
+        )
+        carsTypes.add(
+            CarTypes(
+                "Eléctricos",
+                context?.let { ContextCompat.getDrawable(it, R.drawable.electricos) })
+        )
 
         rec_cars.adapter= CarsTypesAdapter(carsTypes)
+        rec_marks.adapter = CarsMarksAdapter(CarsDataProvider.carsData)
+
 
         return vista;
     }
@@ -78,8 +98,6 @@ class HomeFragment : Fragment() {
 //               }
 //
 //    }
-
-
 
 
 }
