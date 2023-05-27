@@ -11,7 +11,7 @@ class CarsDataProvider {
             CarsData(
                 "Chevrolet",
                 "+15",
-                "https://w7.pngwing.com/pngs/980/301/png-transparent-chevrolet-impala-car-logo-chevrolet-emblem-desktop-wallpaper-business-thumbnail.png"
+                "https://i0.wp.com/lockhartautomotive.ca/wp-content/uploads/2019/01/chevrolet.png?fit=256%2C256&ssl=1"
             ),
             CarsData(
                 "Toyota",
@@ -21,7 +21,7 @@ class CarsDataProvider {
             CarsData(
                 "Honda",
                 "+9",
-                "https://static-s.aa-cdn.net/img/ios/1164042022/490b990a85d803dcbaca3a079cd83028?v=1"
+                "https://cdn.iconscout.com/icon/free/png-256/free-honda-38-827481.png"
             ),
             CarsData(
                 "Volkswagen",

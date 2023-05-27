@@ -15,5 +15,6 @@
     <string name="autosElectricos">Eléctricos</string>
     <string name="filtro_auto">Filtro >|</string>
     <string name="txtViewMarca">Marcas</string>
+    <string name="buscador">Buscador de vehículos</string>
 
 </resources>
