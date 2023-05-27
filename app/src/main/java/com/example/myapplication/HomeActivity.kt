@@ -29,6 +29,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import fragments.AutosFragment
 import fragments.HomeContent
 import fragments.SearchFragment
+import fragments.SettingsFragment
 import fragments.UserFragment
 import github.com.st235.lib_expandablebottombar.ExpandableBottomBar
 import github.com.st235.lib_expandablebottombar.MenuItemDescriptor
@@ -46,9 +47,10 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-
+        changeFragment(HomeContent())
         //Drawer
-        setSupportActionBar(findViewById(R.id.toolbar))
+        var toolbar: Toolbar = findViewById(R.id.toolbar_main)
+        setSupportActionBar(toolbar)
 
         drawer = findViewById(R.id.home_layout)
         navigationView = findViewById(R.id.navigation_view)
@@ -63,23 +65,32 @@ class HomeActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.nav_home -> {
                     // Lógica para el elemento 1
-                    Toast.makeText(this, "nav_home", Toast.LENGTH_LONG).show()
                     changeFragment(HomeContent())
+                    drawer.closeDrawer(GravityCompat.START)
+                    true
+                }
+                R.id.nav_perfil -> {
+                    // Lógica para el elemento 1
+                    changeFragment(UserFragment())
+                    drawer.closeDrawer(GravityCompat.START)
                     true
                 }
                 R.id.nav_configuration -> {
                     // Lógica para el elemento 2
-                    Toast.makeText(this, "nav_configuration", Toast.LENGTH_LONG).show()
+                    changeFragment(SettingsFragment())
+                    drawer.closeDrawer(GravityCompat.START)
                     true
                 }
                 R.id.nav_favorites -> {
                     // Lógica para el elemento 3
                     Toast.makeText(this, "nav_favorites", Toast.LENGTH_LONG).show()
+                    drawer.closeDrawer(GravityCompat.START)
                     true
                 }
                 // Agrega más casos según tus necesidades
                 else -> false
             }
+
         }
 
 
@@ -102,6 +113,7 @@ class HomeActivity : AppCompatActivity() {
                 R.id.search_btn_bar -> changeFragment(SearchFragment())
                 R.id.perfil_btn_bar -> changeFragment(UserFragment())
             }
+
         }
 
 
