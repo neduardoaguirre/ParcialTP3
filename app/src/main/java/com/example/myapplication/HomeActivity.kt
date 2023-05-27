@@ -42,7 +42,6 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var viewModel : PerfilViewModel
     private lateinit var navigationView: NavigationView
     private lateinit var drawer: DrawerLayout
-    //lateinit var binding:
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
