@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="168dp"
-        android:background="#EAEAF1">
+        android:background="@color/colorBackground">
 
         <TextView
             android:id="@+id/general"
@@ -21,14 +21,14 @@
             android:gravity="center_vertical"
             android:paddingStart="16dp"
             android:text="@string/general"
-            android:textColor="@color/hiperVinculo"
+            android:textColor="@color/colorDarkBlue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/modo_oscuro"
+            app:layout_constraintTop_toBottomOf="@+id/conf_modo_oscuro"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/modo_oscuro"
+            android:id="@+id/conf_modo_oscuro"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:gravity="center_vertical"
@@ -47,12 +47,12 @@
             android:layout_marginEnd="16dp"
             android:scaleX="1.5"
             android:scaleY="1.5"
-            app:layout_constraintBottom_toBottomOf="@+id/modo_oscuro"
+            app:layout_constraintBottom_toBottomOf="@+id/conf_modo_oscuro"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/modo_oscuro" />
+            app:layout_constraintTop_toTopOf="@+id/conf_modo_oscuro" />
 
         <TextView
-            android:id="@+id/notificaciones"
+            android:id="@+id/conf_notificaciones"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:paddingStart="16dp"
@@ -61,7 +61,7 @@
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/modo_oscuro" />
+            app:layout_constraintTop_toBottomOf="@+id/conf_modo_oscuro" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/general_switch_notificaciones"
@@ -71,9 +71,9 @@
             android:layout_marginEnd="16dp"
             android:scaleX="1.5"
             android:scaleY="1.5"
-            app:layout_constraintBottom_toBottomOf="@+id/notificaciones"
+            app:layout_constraintBottom_toBottomOf="@+id/conf_notificaciones"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/notificaciones" />
+            app:layout_constraintTop_toTopOf="@+id/conf_notificaciones" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
