@@ -37,7 +37,7 @@ class HomeFragment : Fragment() {
 
         val linearLayoutManager = LinearLayoutManager(context)
         val linearLayoutManager2 =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, true)
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         rec_cars.layoutManager = linearLayoutManager
         rec_marks.layoutManager = linearLayoutManager2
 
