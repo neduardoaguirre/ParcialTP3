@@ -31,7 +31,7 @@ class UserFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[PerfilViewModel::class.java]
+        viewModel =  ViewModelProvider(requireActivity()).get(PerfilViewModel::class.java)
         textViewName.text = viewModel.username
     }
 }

@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         btnLogin.setOnClickListener() {
             val intent = Intent(this, HomeActivity::class.java)
-            intent.putExtra("username", "USERNAME")
+            intent.putExtra("username", "Martin")
             startActivity(intent)
         }
 

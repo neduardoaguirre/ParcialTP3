@@ -66,7 +66,11 @@ dependencies {
     // Jetpack Compose Integration
     implementation("androidx.navigation:navigation-compose:$nav_version")
 
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
+    //ViewModel
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
 
+    //BottomNav
     implementation 'com.github.st235:expandablebottombar:1.5.1'
 }

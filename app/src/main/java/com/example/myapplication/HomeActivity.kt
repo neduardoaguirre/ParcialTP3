@@ -23,6 +23,8 @@ import retrofit2.Callback
 import retrofit2.Response
 import APIServiceBuilder.APIServiceBuilder
 import android.graphics.Color
+import android.view.View
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -42,11 +44,15 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var viewModel : PerfilViewModel
     private lateinit var navigationView: NavigationView
     private lateinit var drawer: DrawerLayout
-
+    private lateinit var headerView: View
+    private lateinit var textUsernameNavHeader : TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         changeFragment(HomeContent())
+
+        viewModel = ViewModelProvider(this).get(PerfilViewModel::class.java)
+        viewModel.username  = intent.getStringExtra("username").toString()
 
         //Drawer
         var toolbar: Toolbar = findViewById(R.id.toolbar_main)
@@ -57,6 +63,11 @@ class HomeActivity : AppCompatActivity() {
         val drawerToggle = ActionBarDrawerToggle(this, drawer, R.string.open, R.string.close)
         drawer.addDrawerListener(drawerToggle)
         drawerToggle.syncState()
+
+        //Seteo Username en navHeader
+        headerView = navigationView.getHeaderView(0)
+        textUsernameNavHeader = headerView.findViewById(R.id.nav_header_username)
+        textUsernameNavHeader.text = viewModel.username
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -83,11 +94,6 @@ class HomeActivity : AppCompatActivity() {
 
         }
 
-
-//        changeFragment(HomeContent())
-
-        viewModel = ViewModelProvider(this)[PerfilViewModel::class.java]
-        viewModel.username  = intent.getStringExtra("username").toString()
 
         getActivity()
 
