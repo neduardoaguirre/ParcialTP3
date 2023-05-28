@@ -16,7 +16,7 @@
             android:id="@+id/toolbar_main"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/color3"
+            android:background="@color/white"
             app:layout_scrollFlags="scroll|enterAlways">
 
             <LinearLayout
@@ -32,7 +32,7 @@
                     android:layout_weight="1"
                     android:background="@color/color1"
                     android:fontFamily="@font/fira_sans"
-                    android:text="@string/premier"
+                    android:text="@string/title_app_1"
                     android:textColor="@color/color3"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -44,7 +44,7 @@
                     android:layout_weight="1"
                     android:background="@color/color2"
                     android:fontFamily="@font/fira_sans"
-                    android:text="@string/rent_car"
+                    android:text="@string/title_app_2"
                     android:textColor="@color/color4"
                     android:textSize="20dp"
                     android:textStyle="bold" />

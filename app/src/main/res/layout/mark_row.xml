@@ -5,10 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="85dp"
     android:layout_height="119dp"
-    app:cardCornerRadius="20dp"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
-    android:layout_marginBottom="0dp">
+    android:layout_marginBottom="0dp"
+    app:cardCornerRadius="20dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -33,6 +33,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="72dp"
             android:layout_marginBottom="26dp"
+            android:fontFamily="@font/mulish"
             android:text="TextView"
             android:textColor="@color/black"
             android:textSize="12dp" />
@@ -46,6 +47,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="96dp"
             android:layout_marginBottom="9dp"
+            android:fontFamily="@font/mulish"
             android:text="TextView"
             android:textColor="#007BFF"
             android:textSize="11dp" />
