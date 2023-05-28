@@ -34,7 +34,7 @@
         <github.com.st235.lib_expandablebottombar.ExpandableBottomBar
             android:id="@+id/expandable_bottom_bar"
             android:layout_width="match_parent"
-            android:layout_height="92dp"
+            android:layout_height="?attr/actionBarSize"
             android:layout_gravity="bottom"
             android:layout_margin="0dp"
             app:exb_backgroundColor="@color/color3"
