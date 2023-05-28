@@ -1,33 +1,38 @@
 package fragments
 
+import APIServiceBuilder.APIServiceBuilder
+import CarsModel.Car
+import CarsModel.CarModel
+import CarsModel.CarsResponse
+import RecyclerViewAdapter.CarsAdapter
+import RecyclerViewAdapter.CarsListAdapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import android.util.Log
+import android.widget.TextView
+import android.widget.Toast
+import com.example.myapplication.HomeActivity
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AutosFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class AutosFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    lateinit var vista: View
+    var carList: MutableList<CarModel> = ArrayList<CarModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
+
     }
 
     override fun onCreateView(
@@ -35,26 +40,62 @@ class AutosFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_autos, container, false)
+        vista = inflater.inflate(R.layout.fragment_autos, container, false)
+
+
+
+        /*
+        //Carga de lista fija
+        for(i in 1 .. 10){
+            carList.add(CarModel("Model $i", 1,"Type $i", "Tramsission $i", "Cylinder $i", "Brand $i"))
+        }
+        val rec_autos = vista.findViewById<RecyclerView>(R.id.rec_autos)
+        rec_autos.setHasFixedSize(true)
+        var linearLayoutManager = LinearLayoutManager(context)
+        rec_autos.layoutManager = linearLayoutManager
+        rec_autos.adapter = CarsListAdapter(carList)
+        */
+
+
+        getCarList()
+
+        return vista
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AutosFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AutosFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+
+    fun getCarList(){
+        val service = APIServiceBuilder.create()
+
+        service.getCarsList("NytbaVuK48jcFV44ssUHjRVUPLxQ8GDl8osK6xe4").enqueue(object: Callback<List<Car>>{
+
+            override fun onResponse(call: Call<List<Car>>, response: Response<List<Car>>) {
+                showData(response.body()!!)
+                Log.e("Response", response.body()!!.toString())
             }
+
+            override fun onFailure(call: Call<List<Car>>, t: Throwable) {
+                TODO("Not yet implemented")
+                Log.e("Error throw", t.stackTraceToString())
+            }
+
+        })
+
     }
+
+
+
+    private fun showData(carList: List<Car>){
+
+            val rec_autos = vista.findViewById<RecyclerView>(R.id.rec_autos)
+            rec_autos.setHasFixedSize(true)
+            var linearLayoutManager = LinearLayoutManager(context)
+            rec_autos.layoutManager = linearLayoutManager
+            rec_autos.adapter = CarsListAdapter(carList)
+
+        }
+
 }
+
+
+
+
