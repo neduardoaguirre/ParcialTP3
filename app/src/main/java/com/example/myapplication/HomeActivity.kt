@@ -1,42 +1,30 @@
 package com.example.myapplication
 
 import CarsModel.Car
-import RecyclerViewAdapter.CarsAdapter
-import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.viewModel.PerfilViewModel
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import APIServiceBuilder.APIServiceBuilder
-import android.graphics.Color
 import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
-import androidx.navigation.ui.AppBarConfiguration
 import fragments.AutosFragment
-import fragments.HomeContent
 import fragments.HomeFragment
 import fragments.SearchFragment
 import fragments.SettingsFragment
 import fragments.UserFragment
 import github.com.st235.lib_expandablebottombar.ExpandableBottomBar
-import github.com.st235.lib_expandablebottombar.MenuItemDescriptor
-
-
 
 
 class HomeActivity : AppCompatActivity() {
