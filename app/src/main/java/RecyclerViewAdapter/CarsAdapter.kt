@@ -10,7 +10,7 @@ import com.example.myapplication.R
 
 class CarsAdapter (private val carsList: List<Car>): RecyclerView.Adapter<CarsAdapter.ViewHolder>(){
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val name: TextView = itemView.findViewById<TextView>(R.id.carTypeTitle)
+        val carFilter: TextView = itemView.findViewById<TextView>(R.id.carFilter)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -21,7 +21,7 @@ class CarsAdapter (private val carsList: List<Car>): RecyclerView.Adapter<CarsAd
     override fun getItemCount() = carsList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val car = carsList[position]
-        holder.name.text = car.make
+        val car = carsList[0]
+        holder.carFilter.text = car.make
     }
 }

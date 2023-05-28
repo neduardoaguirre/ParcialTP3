@@ -6,6 +6,7 @@ import CarsModel.SerializableListCars
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewManager
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -24,7 +25,7 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.manager.SupportRequestManagerFragment
 import kotlinx.coroutines.NonDisposableHandle.parent
 
-class CarsTypesAdapter (private val carsTypesList: MutableList<CarsTypeData>, private val fragmentManager: FragmentManager): RecyclerView.Adapter<CarsTypesAdapter.ViewHolder>(){
+class CarsTypesAdapter (private val carsTypesList: MutableList<CarsTypeData>, private val vista: View): RecyclerView.Adapter<CarsTypesAdapter.ViewHolder>(){
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val carsLayout: ConstraintLayout = itemView.findViewById<ConstraintLayout>(R.id.carsTypesLayout)
@@ -34,6 +35,7 @@ class CarsTypesAdapter (private val carsTypesList: MutableList<CarsTypeData>, pr
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.car_type_row, parent, false)
+
         return ViewHolder(view)
     }
 
@@ -46,28 +48,30 @@ class CarsTypesAdapter (private val carsTypesList: MutableList<CarsTypeData>, pr
         when(position){
             0 -> {
                 holder.carsLayout.setBackgroundResource(R.drawable.radius_yellow)
+                getSportCars(holder.carsLayout, vista)
             }
             1 -> {
                 holder.carsLayout.setBackgroundResource(R.drawable.radius_blue)
+                getSuvCars(holder.carsLayout, vista)
             }
             else -> {
                 holder.carsLayout.setBackgroundResource(R.drawable.radius_light_blue)
-                getCars(holder.carsLayout)
+                getElectricCars(holder.carsLayout, vista)
             }
         }
 
     }
 
-     private fun getCars(card: ConstraintLayout) {
+     private fun getElectricCars(card: ConstraintLayout, view:View) {
         val service = APIServiceBuilder.APIServiceBuilder.create()
 
-        service.getCarsList("NytbaVuK48jcFV44ssUHjRVUPLxQ8GDl8osK6xe4").enqueue(object :
+        service.getElectricCarsList().enqueue(object :
             Callback<List<Car>> {
             override fun onResponse(
                 call: Call<List<Car>>,
                 response: Response<List<Car>>
             ) {
-                showData(response.body()!!, card)
+                showData(response.body()!!, card, view)
             }
 
             override fun onFailure(call: Call<List<Car>>, t: Throwable) {
@@ -75,14 +79,50 @@ class CarsTypesAdapter (private val carsTypesList: MutableList<CarsTypeData>, pr
             }
         })
     }
-    private fun showData(carList: List<Car>, card: ConstraintLayout) {
+
+    private fun getSportCars(card: ConstraintLayout, view:View) {
+        val service = APIServiceBuilder.APIServiceBuilder.create()
+
+        service.getSportCarsList().enqueue(object :
+            Callback<List<Car>> {
+            override fun onResponse(
+                call: Call<List<Car>>,
+                response: Response<List<Car>>
+            ) {
+                showData(response.body()!!, card, view)
+            }
+
+            override fun onFailure(call: Call<List<Car>>, t: Throwable) {
+
+            }
+        })
+    }
+
+    private fun getSuvCars(card: ConstraintLayout, view:View) {
+        val service = APIServiceBuilder.APIServiceBuilder.create()
+
+        service.getSuvCarsList().enqueue(object :
+            Callback<List<Car>> {
+            override fun onResponse(
+                call: Call<List<Car>>,
+                response: Response<List<Car>>
+            ) {
+                showData(response.body()!!, card, view)
+            }
+
+            override fun onFailure(call: Call<List<Car>>, t: Throwable) {
+
+            }
+        })
+    }
+
+    private fun showData(carList: List<Car>, card: ConstraintLayout, view: View) {
         var list = SerializableListCars(carList)
-        val fragment = fragmentManager.findFragmentById(R.id.homeFragment)
 
         card.setOnClickListener {
             println(list)
-            val action = HomeFragmentDirections.actionHomeFragmentToPruebaFragment3(list)
-            fragment?.view?.findNavController()?.navigate(action)
+            val action = HomeFragmentDirections.actionHomeFragmentToPruebaFragment(list)
+            view.findNavController()?.navigate(action)
         }
     }
 }

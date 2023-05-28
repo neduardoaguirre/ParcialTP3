@@ -7,11 +7,11 @@
 
     <fragment
         android:id="@+id/pruebaFragment"
-        android:name="fragments.PruebaFragment"
+        android:name="fragments.FilterFragment"
         android:label="fragment_prueba"
-        tools:layout="@layout/fragment_prueba" >
+        tools:layout="@layout/fragment_filter" >
         <argument
-            android:name="pruebaCars"
+            android:name="carList"
             app:argType="CarsModel.SerializableListCars" />
     </fragment>
     <fragment
@@ -20,7 +20,7 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_pruebaFragment3"
+            android:id="@+id/action_homeFragment_to_pruebaFragment"
             app:destination="@id/pruebaFragment" />
     </fragment>
 </navigation>
