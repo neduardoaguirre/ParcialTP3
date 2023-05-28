@@ -32,6 +32,8 @@
     <string name="filtro_auto">Filtro >|</string>
     <string name="txtViewMarca">Marcas</string>
     <string name="buscador">Buscador de vehículos</string>
+    <string name="premier">Premier</string>
+    <string name="rent_car">RentCar</string>
 
 
 </resources>
