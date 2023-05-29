@@ -2,9 +2,6 @@ package fragments
 
 import APIServiceBuilder.APIServiceBuilder
 import CarsModel.Car
-import CarsModel.CarModel
-import CarsModel.CarsResponse
-import RecyclerViewAdapter.CarsAdapter
 import RecyclerViewAdapter.CarsListAdapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -19,9 +16,6 @@ import retrofit2.Callback
 import retrofit2.Response
 
 import android.util.Log
-import android.widget.TextView
-import android.widget.Toast
-import com.example.myapplication.HomeActivity
 
 
 class AutosFragment : Fragment() {

@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/autoCardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="5dp"
+    android:layout_marginHorizontal="15dp"
     android:layout_marginVertical="10dp"
     android:padding="5dp"
-    app:cardBackgroundColor="@color/color3"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="5dp"
+    android:background="@drawable/radius_white"
+    android:elevation="5dp"
     >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_margin="5dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -40,8 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                app:srcCompat="@drawable/car_logo"
-                />
+                app:srcCompat="@drawable/car_logo" />
         </LinearLayout>
 
         <View
@@ -106,4 +109,4 @@
 
         </LinearLayout>
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
