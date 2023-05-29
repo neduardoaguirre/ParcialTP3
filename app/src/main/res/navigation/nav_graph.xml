@@ -36,6 +36,8 @@
             app:destination="@id/homeFragment" />
         <argument
             android:name="carList"
-            app:argType="CarsModel.SerializableListCars" />
+            app:argType="CarsModel.SerializableListCars"
+            app:nullable="true"/>
+
     </fragment>
 </navigation>

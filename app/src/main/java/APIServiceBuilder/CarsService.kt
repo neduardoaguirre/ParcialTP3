@@ -9,13 +9,13 @@ import retrofit2.http.Headers
 interface CarsService {
 
     @Headers("X-Api-key:NytbaVuK48jcFV44ssUHjRVUPLxQ8GDl8osK6xe4")
-    @GET("cars?fuel_type=electricity")
+    @GET("cars?fuel_type=electricity&limit=15")
     fun getElectricCarsList(): Call<List<Car>>
     @Headers("X-Api-key:NytbaVuK48jcFV44ssUHjRVUPLxQ8GDl8osK6xe4")
-    @GET("cars?fuel_type=gas")
+    @GET("cars?fuel_type=gas&limit=15")
     fun getSportCarsList(): Call<List<Car>>
     @Headers("X-Api-key:NytbaVuK48jcFV44ssUHjRVUPLxQ8GDl8osK6xe4")
-    @GET("cars?fuel_type=diesel")
+    @GET("cars?fuel_type=diesel&limit=15")
     fun getSuvCarsList(): Call<List<Car>>
 
     @Headers("X-Api-key:NytbaVuK48jcFV44ssUHjRVUPLxQ8GDl8osK6xe4")

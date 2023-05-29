@@ -38,16 +38,15 @@ class AutosFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        //var carListNavigation = AutosFragmentArgs.fromBundle(requireArguments()).carList
-        //carListArg = carListNavigation.listCars
-
         vista = inflater.inflate(R.layout.fragment_autos, container, false)
 
-        //if(carListArg.isEmpty()){
+        try{
+            var carListNavigation = AutosFragmentArgs.fromBundle(requireArguments()).carList
+            carListArg = carListNavigation!!.listCars
+            showData(carListArg)
+        }catch (exception: Exception){
             getCarList()
-        //}else{
-            //showData(carListArg)
-        //}
+        }
 
         return vista
     }

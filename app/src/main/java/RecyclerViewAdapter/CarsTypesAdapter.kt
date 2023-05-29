@@ -57,7 +57,7 @@ class CarsTypesAdapter (private val carsTypesList: MutableList<CarsTypeData>, pr
             2 -> {
                 holder.carsLayout.setBackgroundResource(R.drawable.radius_light_blue)
                 getElectricCars(holder.carsLayout, vista)
-            }else ->{
+            }else -> {
 
             }
         }
