@@ -13,7 +13,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         var btnLogin = findViewById<Button>(R.id.btnLogin)
 
         btnLogin.setOnClickListener() {
