@@ -20,9 +20,9 @@ class MainActivity : AppCompatActivity() {
 
         btnLogin.setOnClickListener() {
             val intent = Intent(this, HomeActivity::class.java)
-            //var inputUsername = findViewById<EditText>(R.id.username)
-            //intent.putExtra("username", inputUsername.text)
-            intent.putExtra("username", "Martin")
+            var inputUsername = findViewById<EditText>(R.id.username)
+            intent.putExtra("username", inputUsername.text.toString())
+            //intent.putExtra("username", "Martin")
             startActivity(intent)
         }
 
