@@ -54,9 +54,11 @@ class CarsTypesAdapter (private val carsTypesList: MutableList<CarsTypeData>, pr
                 holder.carsLayout.setBackgroundResource(R.drawable.radius_blue)
                 getSuvCars(holder.carsLayout, vista)
             }
-            else -> {
+            2 -> {
                 holder.carsLayout.setBackgroundResource(R.drawable.radius_light_blue)
                 getElectricCars(holder.carsLayout, vista)
+            }else ->{
+
             }
         }
 
@@ -121,7 +123,8 @@ class CarsTypesAdapter (private val carsTypesList: MutableList<CarsTypeData>, pr
 
         card.setOnClickListener {
             println(list)
-            val action = HomeFragmentDirections.actionHomeFragmentToPruebaFragment(list)
+            //val action = HomeFragmentDirections.actionHomeFragmentToPruebaFragment(list)
+            val action = HomeFragmentDirections.actionHomeFragmentToAutosFragment(list)
             view.findNavController()?.navigate(action)
         }
     }

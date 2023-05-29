@@ -30,6 +30,7 @@ class CarsListAdapter(
         holder.setFuelType(car.fuel_type)
         holder.setTransmission(car.transmission)
         holder.setYear(car.year)
+        holder.setImageSrc(car.make)
     }
 
 

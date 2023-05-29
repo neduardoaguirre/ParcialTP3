@@ -10,21 +10,16 @@ interface CarsService {
 
     @Headers("X-Api-key:NytbaVuK48jcFV44ssUHjRVUPLxQ8GDl8osK6xe4")
     @GET("cars?fuel_type=electricity")
-    //@Header("X-Api-key") apikey: String
-    //@GET("pokemon?limit=100&offset=0")
-    //@Header("X-Api-key") apikey: String
-     fun getElectricCarsList(): Call<List<Car>>
+    fun getElectricCarsList(): Call<List<Car>>
     @Headers("X-Api-key:NytbaVuK48jcFV44ssUHjRVUPLxQ8GDl8osK6xe4")
-     @GET("cars?fuel_type=gas")
-     fun getSportCarsList(): Call<List<Car>>
+    @GET("cars?fuel_type=gas")
+    fun getSportCarsList(): Call<List<Car>>
     @Headers("X-Api-key:NytbaVuK48jcFV44ssUHjRVUPLxQ8GDl8osK6xe4")
     @GET("cars?fuel_type=diesel")
     fun getSuvCarsList(): Call<List<Car>>
 
-    @GET("cars?fuel_type=gas&limit=15&year=2018")
-    //fun getCarsList(@Header("X-Api-key") apikey: String): Call<CarsResponse>
-    //@Header("X-Api-key") apikey: String
-    //@GET("pokemon?limit=100&offset=0")
-    fun getCarsList(@Header("X-Api-key") apikey: String): Call<List<Car>>
+    @Headers("X-Api-key:NytbaVuK48jcFV44ssUHjRVUPLxQ8GDl8osK6xe4")
+    @GET("cars?limit=15&year=2022")
+    fun getCarsList(): Call<List<Car>>
 
 }

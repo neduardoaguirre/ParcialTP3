@@ -10,7 +10,7 @@
     android:padding="5dp"
     app:cardBackgroundColor="@color/color3"
     app:cardCornerRadius="10dp"
-    app:cardElevation="10dp"
+    app:cardElevation="5dp"
     >
 
     <LinearLayout
@@ -40,7 +40,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                app:srcCompat="@drawable/car_logo" />
+                app:srcCompat="@drawable/car_logo"
+                />
         </LinearLayout>
 
         <View
