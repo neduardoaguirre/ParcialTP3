@@ -24,8 +24,6 @@ class FilterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val vista = inflater.inflate(R.layout.fragment_filter, container, false)
-        //Lo siguiente debe ser reemplazado por la lógica de recyclerviews y adapters para mostar
-        //todos los items recibidos
 
         var carList = FilterFragmentArgs.fromBundle(requireArguments()).carList
         vista.findViewById<TextView>(R.id.carFilter).text = carList.listCars[2].make

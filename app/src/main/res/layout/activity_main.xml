@@ -61,6 +61,7 @@
             android:layout_marginTop="25dp"
             android:layout_marginRight="25dp"
             android:background="@drawable/rounded_corner_edit_text"
+            android:fontFamily="@font/poppins"
             android:text="@string/username"
             android:textAlignment="center" />
 
@@ -72,6 +73,7 @@
             android:layout_marginTop="25dp"
             android:layout_marginRight="25dp"
             android:background="@drawable/rounded_corner_edit_text"
+            android:fontFamily="@font/poppins"
             android:inputType="textPassword"
             android:text="@string/password"
             android:textAlignment="center" />
@@ -80,6 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins"
             android:text="@string/forget_password"
             android:textColor="@color/white"
             android:textSize="18sp"
@@ -93,7 +96,7 @@
             android:layout_marginTop="50dp"
             android:layout_marginRight="25dp"
             android:background="@drawable/rounded_corner_btn_login"
-            android:fontFamily="Poppins"
+            android:fontFamily="@font/poppins"
             android:text="@string/btn_login"
             android:textColor="@color/white"
             android:textStyle="bold" />

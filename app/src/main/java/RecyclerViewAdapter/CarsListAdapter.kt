@@ -3,6 +3,7 @@ package RecyclerViewAdapter
 import CarsModel.Car
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.compose.ui.text.toUpperCase
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import holder.CarHolder
@@ -25,12 +26,9 @@ class CarsListAdapter(
     override fun onBindViewHolder(holder: CarHolder, position: Int) {
         var car = carList[position]
         holder.setModel(car.model)
-        holder.setFuelType(car.fuel_type)
+        holder.setFuelType((car.fuel_type))
         holder.setTransmission(car.transmission)
         holder.setYear(car.year)
         holder.setImageSrc(car.make)
     }
-
-
-
 }

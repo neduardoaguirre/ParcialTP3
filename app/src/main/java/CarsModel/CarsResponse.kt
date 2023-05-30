@@ -1,10 +1,6 @@
 package CarsModel
 
 
-data class CarsResponse (
-    val results: List<Car>
-)
-
 class Car {
     var make: String = ""
     var model: String = ""

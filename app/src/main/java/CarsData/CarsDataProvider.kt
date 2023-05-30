@@ -6,7 +6,7 @@ class CarsDataProvider {
             CarsData(
                 "Ford",
                 "+11",
-                "https://mediaclick.es/wp-content/uploads/2013/10/Ford1.jpg"
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Ford_logo.svg/1280px-Ford_logo.svg.png"
             ),
             CarsData(
                 "Chevrolet",
@@ -16,12 +16,12 @@ class CarsDataProvider {
             CarsData(
                 "Toyota",
                 "+10",
-                "https://www.codinter.com/es/wp-content/uploads/sites/3/2018/01/logo-toyota-256x256.png"
+                "https://i.pinimg.com/originals/53/85/9b/53859b2ba85979cd4bb753f2a5a346fe.png"
             ),
             CarsData(
                 "Honda",
                 "+9",
-                "https://cdn.iconscout.com/icon/free/png-256/free-honda-38-827481.png"
+                "https://www.pngmart.com/files/1/Honda-Logo-PNG.png"
             ),
             CarsData(
                 "Volkswagen",
@@ -31,7 +31,7 @@ class CarsDataProvider {
             CarsData(
                 "BMW",
                 "+14",
-                "https://www.spainmotorent.es/wp-content/uploads/2018/07/bmw-logo.png"
+                "https://www.pngplay.com/wp-content/uploads/13/BMW-Logo-PNG-Photo-Image.png"
             ),
             CarsData(
                 "Mercedes-Benz",
@@ -61,7 +61,7 @@ class CarsDataProvider {
             CarsData(
                 "Kia",
                 "+17",
-                "https://cdn.iconscout.com/icon/free/png-256/free-kia-202823.png"
+                "https://upload.wikimedia.org/wikipedia/commons/1/13/Kia-logo.png"
             ),
             CarsData(
                 "Mazda",
@@ -69,9 +69,24 @@ class CarsDataProvider {
                 "https://cdn.iconscout.com/icon/free/png-256/free-mazda-3-827488.png"
             ),
             CarsData(
+                "GMC",
+                "+13",
+                "https://1000marcas.net/wp-content/uploads/2021/02/GMC-Logo.png"
+            ),
+            CarsData(
+                "Alfa Romeo",
+                "+22",
+                "https://assets.stickpng.com/images/580b585b2edbce24c47b2c06.png"
+            ),
+            CarsData(
                 "Subaru",
                 "+10",
-                "https://logospng.org/download/subaru/subaru-256.png"
+                "https://assets.stickpng.com/images/580b585b2edbce24c47b2cbf.png"
+            ),
+            CarsData(
+                "Ferrari",
+                "+7",
+                "https://assets.stickpng.com/images/580b585b2edbce24c47b2c52.png"
             ),
             CarsData(
                 "Volvo",
@@ -79,10 +94,25 @@ class CarsDataProvider {
                 "https://cdn.iconscout.com/icon/free/png-256/free-volvo-3441312-2874761.png"
             ),
             CarsData(
+                "Dodge",
+                "+12",
+                "https://www.pngmart.com/files/22/Dodge-Logo-PNG-File.png"
+            ),
+            CarsData(
                 "Tesla",
                 "+10",
                 "https://cdn.iconscout.com/icon/free/png-256/free-tesla-14-892143.png"
-            )
+            ),
+            CarsData(
+                "Mitsubishi",
+                "+28",
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Mitsubishi_logo.svg/2381px-Mitsubishi_logo.svg.png"
+            ),
+            CarsData(
+                "Acura",
+                "+15",
+                "https://www.pngmart.com/files/10/Acura-Logo-PNG-File.png"
+            ),
         )
     }
 }

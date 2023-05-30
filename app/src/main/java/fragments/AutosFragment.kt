@@ -51,7 +51,6 @@ class AutosFragment : Fragment() {
         service.getCarsList().enqueue(object: Callback<List<Car>>{
             override fun onResponse(call: Call<List<Car>>, response: Response<List<Car>>) {
                 showData(response.body()!!)
-                Log.e("Response", response.body()!!.toString())
             }
 
             override fun onFailure(call: Call<List<Car>>, t: Throwable) {
