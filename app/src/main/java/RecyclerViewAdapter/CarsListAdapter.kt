@@ -1,8 +1,6 @@
 package RecyclerViewAdapter
 
 import CarsModel.Car
-import CarsModel.CarModel
-import CarsModel.CarsResponse
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -30,6 +28,7 @@ class CarsListAdapter(
         holder.setFuelType(car.fuel_type)
         holder.setTransmission(car.transmission)
         holder.setYear(car.year)
+        holder.setImageSrc(car.make)
     }
 
 

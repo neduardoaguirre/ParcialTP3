@@ -22,5 +22,22 @@
         <action
             android:id="@+id/action_homeFragment_to_pruebaFragment"
             app:destination="@id/pruebaFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_autosFragment"
+            app:destination="@id/autosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/autosFragment"
+        android:name="fragments.AutosFragment"
+        android:label="fragment_autos"
+        tools:layout="@layout/fragment_autos" >
+        <action
+            android:id="@+id/action_autosFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <argument
+            android:name="carList"
+            app:argType="CarsModel.SerializableListCars"
+            app:nullable="true"/>
+
     </fragment>
 </navigation>

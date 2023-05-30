@@ -13,23 +13,24 @@
         android:orientation="vertical">
 
 
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragmentContainerView"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="50dp"
+            app:layout_constraintBottom_toTopOf="@+id/expandable_bottom_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_graph" />
+
         <include
             layout="@layout/app_bar_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-
-        <FrameLayout
-            android:id="@+id/fragmentContainerView"
-            android:name="fragments.HomeContent"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="?attr/actionBarSize"
-            app:layout_constraintBottom_toBottomOf="@id/expandable_bottom_bar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout="@layout/fragment_home" />
 
         <github.com.st235.lib_expandablebottombar.ExpandableBottomBar
             android:id="@+id/expandable_bottom_bar"

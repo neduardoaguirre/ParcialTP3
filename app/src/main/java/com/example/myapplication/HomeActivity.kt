@@ -16,6 +16,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import APIServiceBuilder.APIServiceBuilder
+import android.content.Context
+import android.content.Intent
 import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -37,7 +39,6 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        changeFragment(HomeFragment())
 
         viewModel = ViewModelProvider(this).get(PerfilViewModel::class.java)
         viewModel.username  = intent.getStringExtra("username").toString()
@@ -83,23 +84,21 @@ class HomeActivity : AppCompatActivity() {
         }
 
 
-
-
         //bottom navigation
         val bottomBar: ExpandableBottomBar = findViewById(R.id.expandable_bottom_bar)
 
         bottomBar.onItemSelectedListener = { view, menuItem,True ->
 
+            val intent = Intent(this, HomeActivity::class.java)
+            intent.putExtra("username", viewModel.username)
+
             when(menuItem.id){
-                R.id.home_btn_bar -> changeFragment(HomeFragment())
+                R.id.home_btn_bar -> {startActivity(intent)}
                 R.id.shop_btn_bar -> changeFragment(AutosFragment())
                 R.id.search_btn_bar -> changeFragment(SearchFragment())
                 R.id.perfil_btn_bar -> changeFragment(UserFragment())
             }
-
         }
-
-
     }
 
     private fun changeFragment(fragment: Fragment){
@@ -116,35 +115,4 @@ class HomeActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
-
-    private fun getActivity() {
-        val service = APIServiceBuilder.create()
-
-        service.getCarsList("NytbaVuK48jcFV44ssUHjRVUPLxQ8GDl8osK6xe4").enqueue(object: Callback<List<Car>> {
-            override fun onResponse(
-                call: Call<List<Car>>,
-                response: Response<List<Car>>
-            ) {
-                Toast.makeText(this@HomeActivity, "Response obtenida", Toast.LENGTH_LONG).show()
-
-                showData(response.body()!!)
-            }
-
-            override fun onFailure(call: Call<List<Car>>, t: Throwable) {
-
-                Toast.makeText(this@HomeActivity, "No se pudo obtener Response", Toast.LENGTH_LONG).show()
-            }
-        })
-    }
-
-    private fun showData(carList: List<Car>) {
-
-//                findViewById<RecyclerView>(R.id.recyclerView).apply {
-//                    layoutManager = LinearLayoutManager(this@HomeActivity)
-//                    adapter = CarsAdapter(carList)
-//                }
-
-             }
-
 }
